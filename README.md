@@ -1,6 +1,8 @@
 # Flatcap Monorepo Convention
 
-> Name is a combination of "flat" + "en**cap**sulation** (from the encapsulation concept from OOP where classes can define `protected`/`internal` and `private` variables)
+> Name is a combination of:
+> - flat: as in packages should have a flat structure (no directories)
+> - en**cap**sulation: from the encapsulation concept in OOP where classes can define `protected`/`internal` and `private` variables
 
 Rules for a flatcap monorepo:
 
