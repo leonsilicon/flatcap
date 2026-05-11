@@ -13,6 +13,8 @@ Rules for a flatcap monorepo:
   - Private packages may only be imported by the parent package (e.g. `@leonsilicon/com.leonsilicon.myapp.component.keyboard.--components.key` may ONLY be imported by `@leonsilicon/com.leonsilicon.myapp.component.keyboard`)
 - Packages must be flat. All of a package's code files should be next to the package's `package.json` file.
   - For certain files (such as assets), you can use a folder prefixed with an underscore (e.g. `_assets`) to mark a directory as belonging to the package.
+  - Files that are exported from the package must start with a `+`, and must match the exported path in the package.json `"exports"` property. `+main.ts` should be used for the root (`"."`) path.
+  - For nested path exports, you must use folders that start with `+` for each path segment (e.g. `import pkg from "@leonsilicon/com.leonsilicon.myapp.lib.db/sqlite-core/migrator"` -> `com/leonsilicon/myapp/lib/db/+sqlite-core/migrator.ts`
 - Relative imports are banned. A package should prefer using extension-less `package.json` subpath imports.
 
 Example structure:
@@ -24,12 +26,14 @@ packages/
       keyboard/
         --components/
           key/
+            +main.ts
             key.tsx
             index.ts
             package.json
         -context/
+          +main.ts
+          +use.ts
           context.tsx
-          index.ts
           package.json
         package.json
         index.ts
