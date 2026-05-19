@@ -28,7 +28,6 @@ packages/
           key/
             +.ts
             key.tsx
-            index.ts
             package.json
         -context/
           +.ts
