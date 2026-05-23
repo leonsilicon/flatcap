@@ -20,7 +20,7 @@ Rules for a flatcap monorepo:
 Example structure:
 
 ```
-packages/
+<scope>/
   com/leonsilicon/myapp
     components/
       keyboard/
@@ -47,3 +47,5 @@ packages/
       +nested.ts
       +double__nested.ts
 ```
+
+`<scope>` should be equal to the `@scope` you use for your flatcap packages. In this example, it would be `leonsilicon`.
