@@ -16,7 +16,7 @@ Rules for a flatcap monorepo:
   - Files that are exported from the package must start with a `+`, and must match the exported path in the package.json `"exports"` property. `+.ts` should be used for the root (`"."`) path.
   - For nested path exports, you must use folders that start with `+` for each path segment and where slashes are replaced with double underscores (e.g. `import pkg from "@leonsilicon/com.leonsilicon.myapp.lib.db/sqlite-core/migrator"` -> `com/leonsilicon/myapp/lib/db/+sqlite-core__migrator.ts`. These `+` prefixed files should ONLY contain re-exports.
 - Relative imports are banned. A package should prefer using `package.json` subpath imports. The convention is to omit the extension for source code files (i.e. JavaScript/TypeScript files), and keep the extension for non-JS files (this is so it's clear when import attributes are needed for importing file extensions like `.json` ).
-- The convention for files that are solely meant for build-time (e.g. the "file equivalent" of `devDependencies`) is to prefix them with `-`. The `_` prefix is reserved for unused files.
+- The convention for files that are solely meant for build-time (e.g. the "file equivalent" of `devDependencies`) is to prefix them with `_`. The `-` prefix may be used for unused/ignored files.
 
 Example structure:
 
@@ -35,6 +35,7 @@ Example structure:
           +use.ts
           context.tsx
           package.json
+          _build.ts
         package.json
         index.ts
         keyboard.tsx
