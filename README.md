@@ -15,8 +15,10 @@ Rules for a flatcap monorepo:
   - For certain files (such as assets), you can use a folder prefixed with an at sign (e.g. `@assets`) to mark a directory as belonging to the package.
   - Files that are exported from the package must start with a `+`, and must match the exported path in the package.json `"exports"` property. `+.ts` should be used for the root (`"."`) path.
   - For nested path exports, you must use folders that start with `+` for each path segment and where slashes are replaced with double underscores (e.g. `import pkg from "@leonsilicon/com.leonsilicon.myapp.lib.db/sqlite-core/migrator"` -> `com/leonsilicon/myapp/lib/db/+sqlite-core__migrator.ts`. These `+` prefixed files should ONLY contain re-exports.
+  - "Internal" subpaths (e.g. exposing an internal function for testing purposes) can use a `+_` prefix, e.g. `+_core.ts` and imported via `my-pkg/_core`
 - Relative imports are banned. A package should prefer using `package.json` subpath imports. The convention is to omit the extension for source code files (i.e. JavaScript/TypeScript files), and keep the extension for non-JS files (this is so it's clear when import attributes are needed for importing file extensions like `.json` ).
-- The convention for files that are build-time (e.g. the "file equivalent" of `devDependencies`) is to use a double underscore prefix for entrypoints (e.g. `__build.ts`) and a single underscore prefix for import-only files (e.g. `_utils.ts`).
+- The convention for files that are script entrypoints (defined in the package.json `"bin"` property) is to use a single underscore and a unique name (e.g. `_build-ios.ts`) so they can be run with `vpx/bunx/npx _build-ios`.
+- The convention for files that should be emphasized as "private" or build-only is to use a dash as the prefix (e.g. `-utils.ts`).
 
 Example structure:
 
@@ -35,8 +37,8 @@ Example structure:
           +use.ts
           context.tsx
           package.json
-          __build.ts
-          _build-utils.ts
+          _build.ts
+          -build-utils.ts
         package.json
         index.ts
         keyboard.tsx
