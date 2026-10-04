@@ -6,7 +6,7 @@
 
 Rules for a flatcap monorepo:
 
-- Package names should be in reverse DNS format, and the scope should be `-` (e.g. `@-/com.leonsilicon.myapp.component.ui.button`). The name of the package (after the scope, if present) should reflect its location in the filesystem, where each path segment maps to a folder name.
+- Package names should be in reverse DNS format, and the scope should be `-` (e.g. `@-/com.leonsilicon.myapp.component.ui.button`). These scoped packages should all live in `packages/`. The name of the package should reflect its location in the filesystem, where each path segment maps to a folder name.
 - To define an __internal package__, use a path segment that starts with `_`
   - Internal packages may only be imported by packages that start with the same prefix (e.g. `@-/com.leonsilicon.myapp._context` may be imported by any package that starts with `@-/com.leonsilicon.myapp.`)
 - To define a __private package__, use a path segment that starts with `__`
@@ -27,7 +27,7 @@ Rules for a flatcap monorepo:
 Example structure:
 
 ```
-<scope>/
+packages/
   com/leonsilicon/myapp
     components/
       keyboard/
