@@ -1,0 +1,21 @@
+{
+  "name": "flatcap-development",
+  "private": true,
+  "workspaces": [
+    "npm/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "eslint .",
+    "pack:plugin": "npm pack --workspace eslint-plugin-flatcap",
+    "release:plugin": "npm run check && npm test && npm publish --workspace eslint-plugin-flatcap"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.72.1",
+    "eslint": "^10.14.0",
+    "eslint9": "npm:eslint@^9",
+    "oxlint": "^1.90.0",
+    "typescript": "^6.0.3"
+  }
+}

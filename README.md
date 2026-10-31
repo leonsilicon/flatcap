@@ -1,17 +1,20 @@
 # Flatcap Monorepo Convention
 
 > Name is a combination of:
+>
 > - **flat**: as in packages should have a flat structure (no directories)
 > - en**cap**sulation: from the encapsulation concept in OOP where classes can define `protected`/`internal` and `private` variables
 
 Rules for a flatcap monorepo:
 
+Install [`eslint-plugin-flatcap`](./npm/eslint-plugin-flatcap/README.md) to enforce these conventions with ESLint, Oxlint, or Vite+. The recommended presets replace per-repository validation scripts.
+
 - Package names should be in reverse DNS format, and the scope should be `-` (e.g. `@-/com.leonsilicon.myapp.component.ui.button`). These scoped packages should all live in `packages/`. The name of the package should reflect its location in the filesystem, where each path segment maps to a folder name.
-- To define an __internal package__, use a path segment that starts with `_`
+- To define an **internal package**, use a path segment that starts with `_`
   - Internal packages may only be imported by packages that start with the same prefix (e.g. `@-/com.leonsilicon.myapp._context` may be imported by any package that starts with `@-/com.leonsilicon.myapp.`)
-- To define a __private package__, use a path segment that starts with `__`
+- To define a **private package**, use a path segment that starts with `__`
   - Private packages may only be imported by the parent package (e.g. `@-/com.leonsilicon.myapp.component.keyboard.__components.key` may ONLY be imported by `@-/com.leonsilicon.myapp.component.keyboard`)
-- To define a __detached package__, use a path segment that starts with `+` (note that this won't be part of the package name, e.g. `com/leonsilicon/myapp/+pkg` -> `com.leonsilicon.myapp.pkg`).
+- To define a **detached package**, use a path segment that starts with `+` (note that this won't be part of the package name, e.g. `com/leonsilicon/myapp/+pkg` -> `com.leonsilicon.myapp.pkg`).
   - Detached packages may NOT import any internal or private packages.
 - Packages must be flat. All of a package's code files should be next to the package's `package.json` file.
   - For certain files (such as assets), you can use a folder prefixed with an at sign (e.g. `@assets`) to mark a directory as belonging to the package.

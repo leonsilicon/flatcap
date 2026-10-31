@@ -1,0 +1,7 @@
+The original Flatcap rule design and regression scenarios were adapted from
+ImproveLabs/Haniverse's configs/oxlint/plugins/flatcap,
+configs/oxlint/plugins/exports-files, and configs/oxlint/plugins/package-json-schema.
+Source reference: ImproveLabs/Haniverse commit a851bc9ebcd104abdfa1aa1e2f56418ce55edcf0.
+
+The standalone implementation removes application-specific paths, workspace
+dependencies, persistent diagnostic suppression, and the createOnce-only API.

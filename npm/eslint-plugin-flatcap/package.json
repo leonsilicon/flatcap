@@ -1,5 +1,53 @@
 {
   "name": "eslint-plugin-flatcap",
+  "version": "0.1.0",
+  "description": "Reusable Flatcap monorepo architecture rules for ESLint, Oxlint, and Vite+",
+  "keywords": [
+    "architecture",
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "flatcap",
+    "monorepo",
+    "oxlint"
+  ],
+  "homepage": "https://github.com/leonsilicon/flatcap#readme",
+  "bugs": "https://github.com/leonsilicon/flatcap/issues",
+  "license": "MIT",
+  "author": "Leon Si",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonsilicon/flatcap.git",
+    "directory": "npm/eslint-plugin-flatcap"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
   "type": "module",
-  "version": "0.0.0"
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0 || ^10.0.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
 }
